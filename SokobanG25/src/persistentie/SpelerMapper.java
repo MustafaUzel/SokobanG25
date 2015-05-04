@@ -1,11 +1,18 @@
 package persistentie;
+
+
+
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
+
+
 import domein.Speler;
 
 public class SpelerMapper
@@ -52,7 +59,7 @@ public class SpelerMapper
     {
 
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-            PreparedStatement query = conn.prepareStatement("INSERT INTO speler (naam, voornaam, gebruikersnaam, wachtwoord, administrator)"
+            PreparedStatement query = conn.prepareStatement("INSERT INTO speler (naam, voornaam, gebruikersnaam, wachtwoord, isadmin)"
                     + "VALUES (?, ?, ?, ?, ?)");
             query.setString(1, speler.getNaam());
             query.setString(2, speler.getVoornaam());

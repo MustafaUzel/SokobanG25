@@ -29,7 +29,8 @@ public class KeuzeMenu {
 
         while (keuze != 1 || keuze != 2) {
             if (keuze == 1) {
-                SpeelSpel(dc, dc.getLabels());
+                SpeelSpel uc = new SpeelSpel(dc, dc.getLabels());
+                uc.SpeelSpel(dc, dc.getLabels());
 
             } else if (keuze == 2) {
                 System.out.printf(dc.getLabels().getString("stopApp"));
@@ -42,65 +43,5 @@ public class KeuzeMenu {
         }
 
     }
+  }
 
-    public void SpeelSpel(DomeinController dc, ResourceBundle gekozenTaal) {
-        SpeelSpel speelSpel = new SpeelSpel(dc, gekozenTaal);
-        int level = 1;
-
-        String gekozen = "";
-        boolean spelKeuze;
-
-        int keuze2 = 0;
-        speelSpel.setLevel(level);
-
-        do {
-
-            toonKiesSpelMenu(gekozenTaal);
-            gekozen = s.next();
-            spelKeuze = dc.bestaatSpel(gekozen);
-        } while (!spelKeuze);
-        speelSpel.keuzeMenu(gekozen);
-        dc.spelbordenToevoegen();
-        do {
-            speelSpel.setLevel(level);
-            speelSpel.vulHetSpelbord();
-            System.out.println(dc.spelbordObject());
-            speelSpel(speelSpel);
-            speelSpel.setSpelbordVoltooid();
-            level++;
-            speelSpel.toonVoltooideSpelborden();
-            speelSpel.toonAlleSpelbordenInDitSpel();
-            if (level <= dc.getMaxLevel()) {
-                do {
-
-                    System.out.println(gekozenTaal.getString("menuSpelVerder"));
-                    keuze2 = s.nextInt();
-
-                } while (keuze2 < 1 || keuze2 > 2);
-            } else {
-                keuze2 = 3;
-                System.out.println(gekozenTaal.getString("spelVoltooid"));
-            }
-
-        } while (keuze2 == 1);
-
-        if (keuze2 == 2) {
-            System.exit(1);
-        }
-
-    }
-
-    public void toonKiesSpelMenu(ResourceBundle gekozenTaal) {
-        System.out.println(gekozenTaal.getString("menuSpel"));
-        List<String> spellijst = dc.geefSpelMenuList();
-        for (int i = 0; i < spellijst.size(); i++) {
-            System.out.println(spellijst.get(i));
-        }
-        System.out.print(gekozenTaal.getString("keuze"));
-    }
-
-    public void speelSpel(SpeelSpel speelSpel) {
-        SpeelSpel uc = speelSpel;
-        uc.speelSpel();
-    }
-}

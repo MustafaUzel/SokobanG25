@@ -206,9 +206,7 @@ public class DomeinController {
         Spelbord spelb = spelRepository.geefSpelbord(spelbordnummer);
         huidigSpel.setSpelbord(spelb);
 
-        //voegAlleSpelBordenToeAanDatabank();
-        // code na gevulde databank
-        // hier moet code veranderen, zal altijd 1-3 zijn ( selecteer de array spelborden in spel )
+      
     }
     public void spelbordenToevoegen() {
         List<Spelbord> sb = spelRepository.geefSpelbordenAdhvNaam(huidigSpel.getNaam());
