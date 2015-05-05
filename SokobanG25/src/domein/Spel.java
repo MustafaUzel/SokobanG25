@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 
 /**
  *
- * @author Saleeem
+ * @author Muhammet
  */
 public class Spel 
 {

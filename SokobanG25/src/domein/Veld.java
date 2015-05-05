@@ -7,7 +7,7 @@ package domein;
 
 /**
  *
- * @author Saleeem
+ * @author Muhammet
  */
 public class Veld extends SpelbordObject
 {

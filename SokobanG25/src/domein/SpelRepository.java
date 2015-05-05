@@ -10,7 +10,7 @@ import persistentie.SpelMapper;
 
 /**
  *
- * @author Saleeem
+ * @author Muhammet
  */
 public class SpelRepository 
 {

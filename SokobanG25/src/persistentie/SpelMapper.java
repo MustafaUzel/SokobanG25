@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  *
- * @author Saleeem
+ * @author Muhammet
  */
 public class SpelMapper 
 {
