@@ -244,7 +244,7 @@ public class Spel
        SpelbordObject[][] spelbord = sb.getSpelbordOb();
        int startX = startp[0];
        int startY = startp[1];
-       
+       String verplaats = resource.getString("my.lijstje");
        int pos[][]=new int[5][];
         pos[0]=new int[2];
         pos[1]=new int[2];
@@ -272,7 +272,7 @@ public class Spel
                             {
                                 if(!spelbord[startX-2][startY].isKistGeplaatst())
                                 {
-                                    
+                                    verplaats += " x: "+(startX-1)+ " y: "+(startY)+resource.getString("my.boven");
                                     pos[0][0] = startX-1;
                                     pos[0][1] = startY;
                                     lijstje.add("boven");
@@ -286,7 +286,7 @@ public class Spel
                 }
                 else
                 {
-                    
+                    verplaats += " x: "+(startX-1)+ " y: "+(startY)+resource.getString("my.boven");
                     pos[0][0] = startX-1;
                     pos[0][1] = startY;
                     lijstje.add("boven");
@@ -306,7 +306,7 @@ public class Spel
                     {
                         if(!spelbord[startX+2][startY].isKistGeplaatst())
                         {
-                          
+                            verplaats += " x: "+(startX+1)+ " y: "+(startY)+resource.getString("my.onder");
                             pos[1][0] = startX+1;
                             pos[1][1] = startY;
                             lijstje.add("onder");
@@ -319,7 +319,7 @@ public class Spel
               }
               else
               {
-                 
+                  verplaats += " x: "+(startX+1)+ " y: "+(startY)+resource.getString("my.onder");
                   pos[1][0] = startX+1;
                   pos[1][1] = startY;
                   lijstje.add("onder");
@@ -339,7 +339,7 @@ public class Spel
                         {
                             if(!spelbord[startX][startY-2].isKistGeplaatst())
                             {
-                               
+                                verplaats += " x: "+(startX)+ " y: "+(startY-1)+resource.getString("my.links");
                                 pos[2][0] = startX;
                                 pos[2][1] = startY-1;
                                 lijstje.add("links");
@@ -352,7 +352,7 @@ public class Spel
                 }
                 else
                 {
-                    
+                    verplaats += " x: "+(startX)+ " y: "+(startY-1)+resource.getString("my.links");
                     pos[2][0] = startX;
                     pos[2][1] = startY-1;
                     lijstje.add("links");
@@ -372,7 +372,7 @@ public class Spel
                         {
                             if(!spelbord[startX][startY+2].isKistGeplaatst())
                             {
-                                
+                                verplaats += " x: "+(startX)+ " y: "+(startY+1)+resource.getString("my.rechts");
                                 pos[3][0] = startX;
                                 pos[3][1] = startY+1;
                                 lijstje.add("rechts");
@@ -387,7 +387,7 @@ public class Spel
                 }
                 else
                 {
-                    
+                    verplaats += " x: "+(startX)+ " y: "+(startY+1)+resource.getString("my.rechts");
                     pos[3][0] = startX;
                     pos[3][1] = startY+1;
                     lijstje.add("rechts");
@@ -396,7 +396,7 @@ public class Spel
             }  
         }
         
-           
+            verplaats += "\n";
             pos[4][0] = 10;
             /////////////./////////kisten controleren////////////////////////////////////
            
@@ -553,7 +553,7 @@ public class Spel
 
     void voegSpelbordToeAanSpel(Spelbord sb) 
     {
-        this.spelborden.add(sb);
+        spelborden.add(sb);
         
         
     }

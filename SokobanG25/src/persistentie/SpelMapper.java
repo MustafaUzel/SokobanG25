@@ -54,9 +54,9 @@ public class SpelMapper
             PreparedStatement query = conn.prepareStatement("SELECT * FROM spelbord");
             try (ResultSet rs = query.executeQuery()) {
                 while (rs.next()) {
-                    int spelbordID = rs.getInt("idspelbord");
+                    int idspelbord = rs.getInt("idspelbord");
                     
-                    spelborden.add(new Spelbord(spelbordID));
+                    spelborden.add(new Spelbord(idspelbord));
                 }
             }
         } catch (SQLException ex) {

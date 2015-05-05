@@ -41,10 +41,10 @@ public class SpelerMapper
                     String voornaam = rs.getString("voornaam");
                     String gebruikersnaam = rs.getString("gebruikersnaam");
                     String wachtwoord = rs.getString("wachtwoord");
-                    boolean administrator = rs.getBoolean("isadmin");
+                    boolean isAdmin = rs.getBoolean("isAdmin");
                     
 
-                    spelers.add(new Speler(naam, voornaam, gebruikersnaam, wachtwoord, administrator));
+                    spelers.add(new Speler(naam, voornaam, gebruikersnaam, wachtwoord, isAdmin));
                 }
             }
         } catch (SQLException ex) {
@@ -59,7 +59,7 @@ public class SpelerMapper
     {
 
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-            PreparedStatement query = conn.prepareStatement("INSERT INTO speler (naam, voornaam, gebruikersnaam, wachtwoord, isadmin)"
+            PreparedStatement query = conn.prepareStatement("INSERT INTO speler (naam, voornaam, gebruikersnaam, wachtwoord, isAdmin)"
                     + "VALUES (?, ?, ?, ?, ?)");
             query.setString(1, speler.getNaam());
             query.setString(2, speler.getVoornaam());
@@ -84,10 +84,10 @@ public class SpelerMapper
                     String naam = rs.getString("naam");
                     String voornaam = rs.getString("voornaam");                    
                     String wachtwoord = rs.getString("wachtwoord");
-                    boolean administrator = rs.getBoolean("isadmin");
+                    boolean isAdmin = rs.getBoolean("isAdmin");
                     
 
-                    speler = new Speler(naam, voornaam, gebruikersnaam, wachtwoord, administrator);
+                    speler = new Speler(naam, voornaam, gebruikersnaam, wachtwoord, isAdmin);
                 }
             }
         } catch (SQLException ex) {

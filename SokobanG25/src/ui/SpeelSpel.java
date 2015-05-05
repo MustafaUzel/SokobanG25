@@ -24,10 +24,10 @@ public class SpeelSpel {
     }
 
     public void vulHetSpelbord() {
-        domeinController.vulHetSpelbord(); // stelt het spelbord in
+        domeinController.vulHetSpelbord();
     }
 
-    public void steltSpelInAdhvNaam(String keuze) {
+    public void keuzeMenu(String keuze) {
         domeinController.setSpel(domeinController.geefSpel(keuze));
 
     }
@@ -60,71 +60,14 @@ public class SpeelSpel {
             DR_VERPLAATS(startX, startY, eindX, eindY);
             aantalverplaatsingen++;
             System.out.print(domeinController.getLabels().getString("my.verplaatsY") + aantalverplaatsingen);
-           
+            // na keuze opnieuw spelbord tonen
             System.out.println(domeinController.spelbordObject());
             spelVoltooid = domeinController.isSpelbordVoltooid();
             // WHILE ( DR_VoltooiSpelbord )
         } while (!spelVoltooid);
 
     }
-    public void SpeelSpel(DomeinController dc, ResourceBundle gekozenTaal) {
-        
-        //uc3.startNieuwSpel();
-        int level = 1;
 
-        String gekozen = "";
-        boolean spelkeuze;
-
-        int keuze2 = 0;
-        setLevel(level);
-
-        do {
-
-            toonKiesSpelMenu(gekozenTaal);
-            gekozen = input.next();
-            spelkeuze = dc.bestaatSpel(gekozen);
-        } while (!spelkeuze);
-        steltSpelInAdhvNaam(gekozen); // spel ingesteld
-        dc.spelbordenToevoegen();
-        do {
-            setLevel(level);
-            vulHetSpelbord(); // spelbord ingesteld
-            System.out.println(dc.spelbordObject());
-            speelSpel();
-            setSpelbordVoltooid();
-            level++;
-            toonVoltooideSpelborden();
-            toonAlleSpelbordenInDitSpel();
-            if (level <= dc.getMaxLevel()) 
-            {
-                do {
-
-                    System.out.println(gekozenTaal.getString("menuSpelVerder"));
-                    keuze2 = input.nextInt();
-
-                } while (keuze2 < 1 || keuze2 > 2);
-            } else {
-                keuze2 = 3;
-                System.out.println(gekozenTaal.getString("spelVoltooid"));
-            }
-
-        } while (keuze2 == 1);
-
-        if (keuze2 == 2) {
-            System.exit(1);
-        }
-
-    }
-
-    public void toonKiesSpelMenu(ResourceBundle gekozenTaal) {
-        System.out.println(gekozenTaal.getString("menuSpel"));
-        List<String> spellijst = domeinController.geefSpelMenuList();
-        for (int i = 0; i < spellijst.size(); i++) {
-            System.out.println(spellijst.get(i));
-        }
-
-        System.out.print(gekozenTaal.getString("keuze"));
-    }
     public int[] toonVerplaatsMenu(int x, int y, List<String> verplaatsLijstje) {
         int[] eind = new int[2];
         int keuzex = 6;
@@ -132,8 +75,7 @@ public class SpeelSpel {
         try {
 
             System.out.print(domeinController.getLabels().getString("my.startpositie") + x + domeinController.getLabels().getString("my.y") + y + " \n");
-            for (int i = 0; i < verplaatsLijstje.size(); i++) 
-            {
+            for (int i = 0; i < verplaatsLijstje.size(); i++) {
                 System.out.print(verplaatsLijstje.get(i));
                 if (verplaatsLijstje.get(i).equals("boven")) {
                     System.out.print(" X:" + (x - 1) + " Y: " + y + "\n");
